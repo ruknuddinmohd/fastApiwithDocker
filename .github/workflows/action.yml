@@ -17,5 +17,5 @@ jobs:
     - name: Build and push image
       run: |
         echo "${{secrets.DOCKERCREDENTIALS}}" | docker login -u "ruknuddin" --password-stdin
-        docker build -t ruknuddin/fastApiwithDocker:v1 .
-        docker push ruknuddin/fastApiwithDocker:v1
+        docker build -t ruknuddin/fastapiapp:v1 .
+        docker push ruknuddin/fastapiapp:v1
