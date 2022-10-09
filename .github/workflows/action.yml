@@ -1,0 +1,21 @@
+name: fastApi CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build and push image
+      run: |
+        echo "${{secrets.dockercredentials}}" | docker login -u "ruknuddin" --password-stdin
+        docker build -t ruknuddin/fastApiwithDocker:$(date +%s) .
+        docker push ruknuddin/fastApiwithDocker:$(date +%s)
